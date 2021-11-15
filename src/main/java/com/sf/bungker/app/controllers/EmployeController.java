@@ -20,8 +20,14 @@ public class EmployeController {
 	@GetMapping("")
 	public List<UserDetail> index()
 	{
+		//test User detail
 		List<UserDetail> userdetails = employeSrv.all();
 		return userdetails;
+	}
+
+	public UserDetail store()
+	{
+		return employeSrv.save(new UserDetail());
 	}
 
 }
