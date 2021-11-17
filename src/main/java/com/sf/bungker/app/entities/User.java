@@ -1,6 +1,7 @@
 package com.sf.bungker.app.entities;
 
 import java.sql.Date;
+import java.util.Collection;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -52,7 +53,7 @@ public class User {
 	
 	@ManyToAny(fetch = FetchType.LAZY, metaColumn = @Column)
 	@JoinTable(name="role_user",joinColumns = {@JoinColumn(name="user_id")}, inverseJoinColumns = {@JoinColumn(name="role_id")})
-	private List<Role> roles;
+	private Collection<Role> roles;
 	
 
 	public Long getId() {
@@ -119,7 +120,7 @@ public class User {
 		this.updated_at = updated_at;
 	}
 
-	public List<Role> getRoles() {
+	public Collection<Role> getRoles() {
 		return roles;
 	}
 
