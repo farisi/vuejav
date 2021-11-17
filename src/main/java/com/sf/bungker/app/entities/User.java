@@ -4,6 +4,7 @@ import java.sql.Date;
 import java.util.Collection;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -11,9 +12,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.ManyToAny;
 
 @Table(name = "users")
 @Entity
@@ -51,9 +53,12 @@ public class User {
 	
 	private Date updated_at;
 	
-	@ManyToAny(fetch = FetchType.LAZY, metaColumn = @Column)
+	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name="role_user",joinColumns = {@JoinColumn(name="user_id")}, inverseJoinColumns = {@JoinColumn(name="role_id")})
 	private Collection<Role> roles;
+
+	@OneToOne(mappedBy = "user",cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private UserProfile userProfile;
 	
 
 	public Long getId() {
@@ -124,9 +129,15 @@ public class User {
 		return roles;
 	}
 
-	public void setRoles(List<Role> roles) {
+	public void setRoles(Collection<Role> roles) {
 		this.roles = roles;
 	}
-	
-	
+
+	public UserProfile getUserProfile() {
+		return userProfile;
+	}
+
+	public void setUserProfile(UserProfile userProfile) {
+		this.userProfile = userProfile;
+	}	
 }

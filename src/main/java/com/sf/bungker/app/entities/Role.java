@@ -1,10 +1,15 @@
 package com.sf.bungker.app.entities;
 
 import java.sql.Date;
+import java.util.Collection;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Table(name="roles")
@@ -29,6 +34,15 @@ public class Role  {
 	private String descripton;
 	private Date created_at;
 	private Date updated_at;
+
+	@ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "privilege_role",
+            joinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "privilege_id", referencedColumnName = "id")
+    )
+    private Collection<Privilege> privileges;
+	
 	public int getId() {
 		return id;
 	}
@@ -58,6 +72,12 @@ public class Role  {
 	}
 	public void setUpdated_at(Date updated_at) {
 		this.updated_at = updated_at;
+	}
+	public Collection<Privilege> getPrivileges() {
+		return privileges;
+	}
+	public void setPrivileges(Collection<Privilege> privileges) {
+		this.privileges = privileges;
 	}
 	
 	
