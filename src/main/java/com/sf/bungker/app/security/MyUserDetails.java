@@ -39,14 +39,14 @@ public class MyUserDetails implements UserDetails
     public boolean isAccountNonExpired()
     {
         //return user.getAccountNonExpired();
-    	return false;
+    	return true;
     }
 
     @Override
     public boolean isAccountNonLocked()
     {
         //return user.getAccountNonLocked();
-    	return false;
+    	return true;
     }
 
     /**
@@ -60,7 +60,7 @@ public class MyUserDetails implements UserDetails
     public boolean isCredentialsNonExpired()
     {
         //return user.getCredentialsNonExpired();
-    	return false;
+    	return true;
     }
 
     @Override
