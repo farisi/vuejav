@@ -20,9 +20,9 @@ import com.sf.bungker.app.security.MyUserDetailsService;
 
 import javax.sql.DataSource;
 
-@Configuration
-@EnableAuthorizationServer
-@Import(SecurityConfig.class)
+// @Configuration
+// @EnableAuthorizationServer
+// @Import(SecurityConfig.class)
 public class OAuth2AuthorizationServerConfig extends AuthorizationServerConfigurerAdapter
 {
     private final AuthenticationManager authenticationManager;

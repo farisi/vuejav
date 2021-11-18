@@ -30,9 +30,9 @@ import com.sf.bungker.app.security.providers.CustomDaoAuthenticationProvider;
 import java.util.Collections;
 
 
-// @Configuration
-// @EnableWebSecurity
-// @Import(PasswordEncoders.class)
+ @Configuration
+ @EnableWebSecurity
+ @Import(PasswordEncoders.class)
 public class SecurityConfig extends WebSecurityConfigurerAdapter
 {
     private final MyUserDetailsService userDetailsService;
@@ -68,8 +68,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter
                     .exceptionHandling()
                 .and()
                     .formLogin()
-                    .loginPage("/login")
-                    .loginProcessingUrl("/login")
+//                    .loginPage("/login")
+//                    .loginProcessingUrl("/login")
                     .permitAll()
                 .and()
                     .logout()

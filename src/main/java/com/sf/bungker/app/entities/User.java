@@ -1,5 +1,6 @@
 package com.sf.bungker.app.entities;
 
+import java.io.Serializable;
 import java.sql.Date;
 import java.util.Collection;
 import java.util.List;
@@ -19,7 +20,7 @@ import javax.persistence.Table;
 
 @Table(name = "users")
 @Entity
-public class User {
+public class User implements Serializable {
 	
 	public User() {}
 	
