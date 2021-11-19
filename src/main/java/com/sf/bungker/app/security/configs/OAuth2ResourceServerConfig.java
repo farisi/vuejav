@@ -7,8 +7,8 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Res
 
 import com.sf.bungker.app.security.constans.ResourceConstants;
 
-// @Configuration
-// @EnableResourceServer
+ @Configuration
+ @EnableResourceServer
 public class OAuth2ResourceServerConfig extends ResourceServerConfigurerAdapter
 {
     @Override
